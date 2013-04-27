@@ -1,0 +1,39 @@
+ParrotBot
+=========
+Welcome to the ParrotBot github page! Just as a disclaimer, all parrots are completely virtual and no tropical birds were harmed in the making of this program.
+
+ParrotBot does everythign you want it to. The only limit is yourself. You feed it a file called a learn file that it can read (and write to), it will perform analysis on it, talk to you, and learn from its mistakes. 
+
+If you follow my projects you might think "Wow, this sounds a lot like C-response-system". Yeah, this is the rewrite of that. Now, I spent a lot of time on C-response-system, so 2 hours of programming will not create a product that can nearly rival C-response-system. Expect a lot of updates over the coming weeks on this, more heavy on the weekends.
+
+Limitations over C-response-system
+=================================
+-The output is terrible.
+-It is prone to crashing.
+-No Crunch
+-No true learning
+-No random responses
+-No boot system
+-No config file
+
+Advantages over C-R-S
+===================
+-Nothing at all, other than this is about 300 lines less code for doing the same thing, and cleaner. (27 lines)
+ 
+Features that will be implemented
+=================================
+-Better output
+-A sub-project for true learning that will use a diff-like program to be able to learn from any kind of sentence, not just hard coded ones.
+-Random responses (these will be a pain with Haskell's randomness. I may use some C++ for this)
+
+Plans for the future
+=====================
+Eventually I want this to become better than C-response-system (obviously, who wouldn't want a better C-response-system).
+
+Towards the last few days of the C-response-system the code got really icky (especially around the plugin system) and that is why I am rewriting it for the THIRD time. I plan to not re-implement crunch, and that is such a service that I will call that a feature.
+
+I will create a .deb when I feel the project has matured a bit.
+
+License
+========
+Like all of my projects, this is being licensed under the BJLPL.

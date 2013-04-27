@@ -1,0 +1,29 @@
+Black Joe Lesser Public License
+======
+1.0.0
+======
+Preamble=
+======
+I am a programmer; not a law student. This license is an idea and not an implementation. I shouldn't have problems with companies wanting this code, and if they do this license will
+not stop them from using it in whatever ways their lawyers see fit. The license is more of a code of ethics regarding the project.
+
+---
+Using
+---
+All users of the software which this license governs are free to edit the original source code (or executable) for personal usage and redistribution, commercial or otherwise.
+
+---
+Redistribution
+---
+All users may freely redistribute exact copies of the code or executable, but not in a way to generate profit exceeding shipping fees imposed by whatever means the software is delivered.
+Altered copies may also be distributed at the discretion of the author, and the author may charge for this product. Altered Copies may not be named "PreProcess" and the authors cannot claim that they are affilliated in any way with the author of the original source code unless otherwise instructed.
+
+---
+Relicensing
+---
+Altered source code can be relicensed under the GNU LGPL Version 2, the GNU GPL 2, or the BSD license. Any BJLPL code can be promoted to BJPL code at the discretion of the author.
+
+---
+Definition of Altered
+---
+"Altered" source code refers to a feature added to the software that enables new functionallity in the library's forward-facing API, module, or executable. If the change to the code does not alter, improve, remove, or add functionallity it is not an altered copy.
