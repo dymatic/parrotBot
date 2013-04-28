@@ -28,7 +28,11 @@ Features that will be implemented
 
 Plans for the future
 =====================
-This has required a lot of hacks (including writing a C++ program to append files to avoid lazy evaluation), so I want to clean them up AFTER the program is feature-complete.
+Eventually I want this to become better than C-response-system (obviously, who wouldn't want a better C-response-system).
+
+Towards the last few days of the C-response-system the code got really icky (especially around the plugin system) and that is why I am rewriting it for the THIRD time. I plan to not re-implement crunch, and that is such a service that I will call that a feature.
+
+I will create a .deb when I feel the project has matured a bit.
 
 License
 ========

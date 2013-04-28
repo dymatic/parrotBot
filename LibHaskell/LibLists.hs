@@ -35,6 +35,13 @@ module LibHaskell.LibLists(
  ,oneMore
  ,splitOn
  ,lastx
+ ,flatten
+ ,afterList
+ ,refPos
+ ,cond
+ ,notCond
+ ,contains
+ ,removeLeading
 ) where
 
 -- For general lists not biased to a type.
@@ -206,6 +213,7 @@ pop (_:xs) = xs
 
 --Grab the first element of a list.
 grab :: [a] -> a
+grab [x] = x
 grab (x:_) = x
 
 --Take the last element of a list.
@@ -255,3 +263,38 @@ lastx []  _ = []
 lastx a@(x:xs) b
   | (length a) <= b = x : lastx xs b
   | otherwise = lastx xs b
+
+--Flatten a list of two-part tupples into one list.
+flatten :: [(a,a)] -> [a]
+flatten [] = []
+flatten ((a,b):xs) = a : b : flatten xs
+
+--What comes after the list?
+afterList :: (Eq a)  => [a] -> [a] -> [a]
+afterList a@(x:xs) y
+  | (take (length y) a) == y = (strt xs ((length y) - 1))
+  | otherwise = afterList xs y
+
+--Get the element out of the second list from where it occurs in the first.
+refPos :: (Eq a) => [a] -> [b] -> a -> b
+refPos a b c = b !! (pos a c)
+
+-- Perform a function based on a predicate.
+cond :: (a -> Bool) -> (a -> a) -> a -> a
+cond f1 f2 c = if (f1 c) then (f2 c) else c
+
+--Cond with not applied
+notCond  :: (a -> Bool) -> (a -> a) -> a -> a
+notCond f1 f2 c = if (not (f1 c)) then (f2 c) else c
+
+contains :: (Eq a) => [a] -> [a] -> Bool
+contains [] _ = False
+contains a@(x:xs) b
+  | (take (length b) a) == b = True
+  | otherwise = contains xs b
+
+removeLeading ::(Eq a) => [a] -> a -> [a]
+removeLeading [] _ = []
+removeLeading a@(x:xs) b
+  | x == b = removeLeading xs b
+  | otherwise = a 
