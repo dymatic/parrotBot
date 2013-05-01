@@ -7,7 +7,6 @@ module ProjectSpecific(
    ,amRes
    ,areRes
    ,restructure
-   ,hackEval
    ,sanitize
 	) where
 
@@ -73,12 +72,6 @@ partLook ((trip,fun):xs) x
 
 restructure :: String -> String
 restructure x = (partLook [("am",amRes),("is",isRes),("are",areRes)] x) x
-
-hackEval :: [String] -> Bool -- This is the definition of a hack and might be changed later.
-hackEval [] = False 
-hackEval (x:xs)
-	| x == "foobar" = True
-	| otherwise = hackEval xs
 
 sanitize :: [String] -> [String]
 sanitize x = map ((flip removeLeading) ' ') $ filter  (\c -> (length c > 3)) x 
