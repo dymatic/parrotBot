@@ -17,7 +17,8 @@ Limitations over C-response-system
 Advantages over C-R-S
 ===================
 -True Learning works a LOT better, simpler, and easier than it does in C-response system. Better: It can read am phrases, is phrases, and are phrases. simpler: The process that extracts the information is really terse thanks to LibHaskell. easier: All the user has to do is type learn: phrase for the bot to learn the phrase.
- 
+
+- Fuzzy search has been implemented, meaning that similar phrases will be returned. This is what AI WING tried to do. 
 Features that will be implemented
 =================================
 -Config File

@@ -8,9 +8,11 @@ module ProjectSpecific(
    ,areRes
    ,restructure
    ,sanitize
+   ,closeEnough
 	) where
 
 import LibHaskell.LibLists
+import StatAnal.WordStat
 -- Sample configuration file
 -- whatever|whatever|whatver_foobar
 
@@ -25,8 +27,10 @@ makeAllParameters (x:xs) = makeParameters x ++ (makeAllParameters xs)
 formulateResponse :: [(String,String)] -> String -> String
 formulateResponse [] _ = "learn"
 formulateResponse a prompt
-	| not $ prompt `inFst` a = formulateResponse [] [] --Kind of a hack.
-	| otherwise = look prompt a
+	| prompt `inFst` a = look prompt a
+	| anySimilar a prompt = look (mostSimilarWord (map fst a) prompt) a
+	| otherwise = "learn"
+
 
 format :: String -> String -> String
 format a b = a ++ "_" ++ b
@@ -75,3 +79,9 @@ restructure x = (partLook [("am",amRes),("is",isRes),("are",areRes)] x) x
 
 sanitize :: [String] -> [String]
 sanitize x = map ((flip removeLeading) ' ') $ filter  (\c -> (length c > 3)) x 
+
+closeEnough :: (String,String) -> String -> Bool
+closeEnough (a,_) s = isSimilarWord a s
+
+anySimilar :: [(String,String)] -> String -> Bool
+anySimilar x s = or (map ((flip closeEnough) s)  x)
