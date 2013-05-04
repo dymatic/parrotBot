@@ -1,0 +1,9 @@
+Package: parrotbot
+Version: 1.0.0
+Architecture: amd64
+Maintainer: Norton "dymatic" Jenkins <dominantshoe@gmail.com>
+Installed-Size: 1200
+Depends: ghc
+Section: accessories
+Priority: optional
+Description: Talk to an artificial intelligence that you can actually teach!

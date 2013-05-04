@@ -8,7 +8,7 @@ If you follow my projects you might think "Wow, this sounds a lot like C-respons
 
 Limitations over C-response-system
 =================================
--It is prone to crashing (It has had a history of this, but it seems to have gotten better after I added sanitization)
+-Some of the WING responses aren't always accurate. This is a problem from StatAnal and will be fixed.
 -No Crunch
 -No random responses
 -No boot system
@@ -25,7 +25,6 @@ Features that will be implemented
 -Random Responses
 -Special Commands
 -REMOVE THE HACKS
--.deb file after maturation.
 
 Plans for the future
 =====================

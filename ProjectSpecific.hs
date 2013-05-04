@@ -9,6 +9,7 @@ module ProjectSpecific(
    ,restructure
    ,sanitize
    ,closeEnough
+   ,sanitizeInput
 	) where
 
 import LibHaskell.LibLists
@@ -33,7 +34,7 @@ formulateResponse a prompt
 
 
 format :: String -> String -> String
-format a b = a ++ "_" ++ b
+format a b = (replaceAll (a ++ "_" ++ b) ('\'',' '))
 
 -- input = "I am a dragon -> (What am I?_You are a dragon"
 amRes :: String -> String
@@ -85,3 +86,7 @@ closeEnough (a,_) s = isSimilarWord a s
 
 anySimilar :: [(String,String)] -> String -> Bool
 anySimilar x s = or (map ((flip closeEnough) s)  x)
+
+sanitizeInput :: String -> String
+sanitizeInput a@(x:xs) = replaceAllOf a $ sew str (churn ' ' (length str))
+	where str = ",;:\"'\\<.>?'~`!@#$%^&*([;{|}])-_=+" 

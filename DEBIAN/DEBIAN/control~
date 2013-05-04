@@ -1,0 +1,9 @@
+Package: parrotbot
+Version: 1.0.0
+Architecture: amd64
+Maintainer: Norton "dymatic" Jenkins <dominantshoe@gmail.com>
+Installed-Size: 1200
+Depends: ghc
+Section: accessories
+Priority: optional
+Description: Create your own language in 20 seconds flat. Write sanitization checks for commonly mispelled words. Make text manipulation your pet.
