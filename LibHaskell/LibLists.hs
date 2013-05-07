@@ -44,6 +44,10 @@ module LibHaskell.LibLists(
  ,removeLeading
  ,replaceAll
  ,replaceAllOf
+ ,unit
+ ,accuracy
+ ,excedes
+ ,ses
 ) where
 
 -- For general lists not biased to a type.
@@ -314,3 +318,16 @@ replaceAll (x:xs) (a,b)
 replaceAllOf :: (Eq a) => [a] -> [(a,a)] -> [a]
 replaceAllOf x [] = x
 replaceAllOf x ((a,b):ys) = replaceAll (replaceAllOf x ys) (a,b)
+
+-- Run "Unit Tests"
+unit :: (Eq a) => [a] -> [([a] -> Bool)] -> Int -> Bool
+unit a b x = excedes (map (\c -> (c a)) b) True x
+
+accuracy :: [Bool] -> Int -> Bool
+accuracy x y = excedes x True y
+
+excedes :: (Eq a) => [a] -> a -> Int -> Bool
+excedes a x c = (occurences a x) >= c
+
+ses ::(Eq a) => [a] -> [a] -> Bool
+ses a b = and [((grab a) == (grab b)),((pop a)==(pop b))]

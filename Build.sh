@@ -14,6 +14,8 @@ cp ./appender ./DEBIAN/usr/bin/
 rm ./DEBIAN/usr/share/doc/parrotBot/README
 cp ./README.md ./DEBIAN/usr/share/doc/parrotBot/README
 
+rm -rf ./StatAnal
+cp -R ../StatAnal ./StatAnal
 rm *.deb
 fakeroot dpkg -b ./DEBIAN
 dpkg-name *.deb

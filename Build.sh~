@@ -17,4 +17,6 @@ cp ./README.md ./DEBIAN/usr/share/doc/parrotBot/README
 rm *.deb
 fakeroot dpkg -b ./DEBIAN
 dpkg-name *.deb
-dpkg-name
+
+git add *
+git add -u
