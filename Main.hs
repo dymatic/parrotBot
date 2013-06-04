@@ -2,11 +2,12 @@
 
 import System.IO
 
-import LibHaskell.LibLists
+import Archimedes.Sequence.Manipulate
 import ProjectSpecific
 import System.Process
 import System.Exit
 import System.Environment
+import Archimedes.Sequence.Clarify
 
 promptLine :: String -> IO String
 promptLine prompt = do
@@ -18,10 +19,10 @@ main = do
 	homeDir <- getEnv "HOME"
 	learnConfig <- openFile (homeDir ++ "/.parrotBot/config") ReadMode
 	learnConfigContents <- hGetContents learnConfig
-	learnTextFile <- openFile (grab (lines learnConfigContents)) ReadMode
+	learnTextFile <- openFile (head (lines learnConfigContents)) ReadMode
 	learnText <- hGetContents learnTextFile
 	
-	let cmdAppend = ("./appender " ++ (grab (lines learnConfigContents)) ++ " ")
+	let cmdAppend = ("./appender " ++ (head (lines learnConfigContents)) ++ " ")
 	let params = makeAllParameters (sanitize (lines learnText))
 	inputs <- promptLine "You: "
 	let input = sanitizeInput inputs
