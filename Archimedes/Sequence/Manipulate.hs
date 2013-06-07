@@ -5,8 +5,6 @@ module Archimedes.Sequence.Manipulate(
      , after
      , before
      , between
-     , rm
-     , remove
      , pos
      , positions
      , removeLeading
@@ -24,6 +22,9 @@ fibseq x = tail $ reverse $ helper x (length x)
 
 descend :: [Int] -> Int -> Int
 descend x b = sum $ (to x b)
+
+rm :: (Eq a) =>  [a] -> a -> [a]
+rm x b = filter (/=b) x
 
 -- Exported Functions
 sub :: [a] -> Int -> [a]
@@ -43,26 +44,12 @@ after a b = sub a $ pos a b
 before :: (Eq a) => [a] -> a -> [a]
 before a b = to a $ pos a b
 
-between :: (Eq a) => [a] -> (a,a) -> [a]
-between x (a,b) = before (after x a) b
-
-rm :: (Eq a) => [a] -> a -> [a]
-rm x y = filter (/= y) x
-
-remove :: (Eq a) => [a] -> [a] -> [a]
-remove [] _ = []
-remove x a
-    | not (x `contains` a) = x
-    | (take la x) == a = remove (sub x $ dec la) a
-    | otherwise = (head x) : remove (tail x) a
-  where la = (length a)
-
 pos :: (Eq a) => [a] -> a -> Int
 pos a b = length $ filterBreak (/= b) a
 
 positions :: (Eq a) => [a] -> a -> [Int]
 positions a b = let lengths = (zip a [0..(dec (length a))]) in
-  rm (map (\(c,d) -> if c == b then d else (-1)) lengths) (-1)
+  rm  (map (\(c,d) -> if c == b then d else (-1)) lengths) (-1)
 
 removeLeading :: (Eq a) => [a] -> a -> [a]
 removeLeading x b = removeBreak (== b) x
@@ -81,3 +68,6 @@ splitOn x y
 intersperse :: [a] -> a -> [a]
 intersperse [] _ = []
 intersperse (x:xs) b = x : b : intersperse xs b
+
+between :: (Eq a) => [a] -> (a,a) -> [a]
+between x (a,b) = before (after x a) b
