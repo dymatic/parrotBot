@@ -4,6 +4,9 @@ ghc --make parrotOne.hs
 
 mv ./Main ./parrotBot
 
+g++ ./appender.cpp
+mv ./a.out ./appender
+
 find . -name "*.o" -exec rm -f '{}' +
 find . -name "*.hi" -exec rm -f '{}' +
 
@@ -20,9 +23,16 @@ cp ./README.md ./DEBIAN/usr/share/doc/parrotBot/README
 
 rm -rf ./StatAnal
 cp -R ../StatAnal ./StatAnal
-rm *.deb
+rm -R *.deb
 fakeroot dpkg -b ./DEBIAN
 dpkg-name *.deb
+
+mkdir debs
+mkdir executables
+
+mv ./random ./executables
+mv ./appender ./executables
+mv *.deb ./debs
 
 git add *
 git add -u
