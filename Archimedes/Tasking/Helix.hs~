@@ -1,0 +1,26 @@
+-- Helix - A simple regex replacement.
+--Internal data structures:
+--atoms   -> (a, [a])
+--strands -> abcdef.. 
+
+-- input : doesmatch abc @@@
+
+module Archimedes.Tasking.Helix(
+  , atomMatch
+  , strandMatch
+  , toStrand
+  , hasStrand
+  , strands) where
+
+type Strand  = (Char,String)
+
+atomMatch :: Strand -> Char -> Bool
+atomMatch (x,s) b = b `elem` s
+
+strands :: String -> String -> [Strand] -> [String]
+strands [] _ _ = []
+strands string control gsl
+  | toStrand relv gsl == control = relv : recur
+  | otherwise = recur
+    where relv = (take (length control) string)
+          recur = strands (tail string) control gsl

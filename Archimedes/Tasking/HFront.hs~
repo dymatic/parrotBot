@@ -1,0 +1,4 @@
+--Frontend to Helix.hs
+module HFront(
+  , control
+  , getStrand

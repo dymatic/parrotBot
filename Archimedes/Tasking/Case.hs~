@@ -1,0 +1,11 @@
+module Case(
+    isCap
+  , isLower
+  , capitalize
+  , lowerrize
+  , toCap
+  , toLower) where
+
+isCap :: Char -> Char
+isCap c = c `elem` ['a'..'z']
+

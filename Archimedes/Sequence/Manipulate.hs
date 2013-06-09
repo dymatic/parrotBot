@@ -9,6 +9,7 @@ module Archimedes.Sequence.Manipulate(
      , positions
      , removeLeading
      , afterList
+     , beforeList
      , splitOn
      , intersperse) where
 
@@ -60,6 +61,12 @@ afterList x b
   | (take (length b) x) == b = sub x (dec (length b))
   | otherwise = afterList (tail x) b
 
+beforeList :: (Eq a) => [a] -> [a] -> [a]
+beforeList [] _ = []
+beforeList a@(x:xs) b
+  | (take (length b) a) == b = []
+  | otherwise = x : beforeList xs b
+                
 splitOn :: (Eq a) => [a] -> a -> [[a]]
 splitOn x y
   | y `elem` x = (before x y) : (splitOn (after x y) y)
