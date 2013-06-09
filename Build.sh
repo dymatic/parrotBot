@@ -32,6 +32,9 @@ mkdir executables
 
 mv ./random ./executables
 mv ./appender ./executables
+mv ./parrotOne ./executables
+mv ./parrotBot ./executables
+
 mv *.deb ./debs
 
 git add *
